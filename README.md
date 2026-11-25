@@ -1,11 +1,8 @@
-# Port Scanner TCP — Roteiro 4 (Tecnologias Hacker · Insper)
+# Port Scanner TCP — Roteiro 4 (Tecnologias Hacker · Insper) - Uso Acadêmico
 
 Scanner de portas **TCP Connect** escrito em Python 3 usando apenas a biblioteca padrão (`socket`, `argparse`,
 `concurrent.futures`...). Nenhuma biblioteca de scan é usada e o Nmap **não** é executado pelo programa — ele só
 aparece como ferramenta de validação nos experimentos.
-
-> ⚠️ **Uso ético:** escaneie somente sistemas **próprios ou expressamente autorizados**. Por segurança, o programa
-> recusa alvos de IP público a menos que você passe `--autorizado`.
 
 ## Requisitos
 
