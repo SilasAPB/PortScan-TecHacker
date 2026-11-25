@@ -1,0 +1,10 @@
+__pycache__/
+*.pyc
+.venv/
+.idea/
+.vscode/
+*.swp
+# saídas locais de uso do scanner (as evidências oficiais ficam em evidencias/)
+/resultado*.json
+/resultado*.csv
+/scan*.log

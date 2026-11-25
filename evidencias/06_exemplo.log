@@ -1,0 +1,16 @@
+2026-11-24 22:24:16,086 INFO inicio alvo=127.0.0.1 ip=127.0.0.1 portas=6 timeout=1.0 workers=6
+2026-11-24 22:24:16,087 INFO alvo=127.0.0.1 ip=127.0.0.1 porta=9001 resultado=ABERTA tempo_ms=0.3 detalhe=conexão TCP estabelecida (handshake concluído)
+2026-11-24 22:24:16,087 INFO alvo=127.0.0.1 ip=127.0.0.1 porta=6379 resultado=ABERTA tempo_ms=0.5 detalhe=conexão TCP estabelecida (handshake concluído)
+2026-11-24 22:24:17,088 WARNING alvo=127.0.0.1 ip=127.0.0.1 porta=9007 resultado=TIMEOUT tempo_ms=1000.8 detalhe=sem resposta em 1.0s (causa indeterminada: firewall, perda, lentidão...)
+2026-11-24 22:24:17,088 WARNING alvo=127.0.0.1 ip=127.0.0.1 porta=9006 resultado=TIMEOUT tempo_ms=1001.2 detalhe=sem resposta em 1.0s (causa indeterminada: firewall, perda, lentidão...)
+2026-11-24 22:24:17,088 WARNING alvo=127.0.0.1 ip=127.0.0.1 porta=9004 resultado=TIMEOUT tempo_ms=1001.3 detalhe=sem resposta em 1.0s (causa indeterminada: firewall, perda, lentidão...)
+2026-11-24 22:24:17,088 WARNING alvo=127.0.0.1 ip=127.0.0.1 porta=9005 resultado=TIMEOUT tempo_ms=1001.4 detalhe=sem resposta em 1.0s (causa indeterminada: firewall, perda, lentidão...)
+2026-11-24 22:24:17,088 INFO fim duracao=1.00s verificadas=6/6
+2026-11-24 22:27:08,735 INFO inicio alvo=127.0.0.1 ip=127.0.0.1 portas=6 timeout=1.0 workers=6
+2026-11-24 22:27:08,736 INFO alvo=127.0.0.1 ip=127.0.0.1 porta=6379 resultado=ABERTA tempo_ms=0.3 detalhe=conexão TCP estabelecida (handshake concluído)
+2026-11-24 22:27:08,736 INFO alvo=127.0.0.1 ip=127.0.0.1 porta=9001 resultado=ABERTA tempo_ms=0.3 detalhe=conexão TCP estabelecida (handshake concluído)
+2026-11-24 22:27:09,737 WARNING alvo=127.0.0.1 ip=127.0.0.1 porta=9004 resultado=TIMEOUT tempo_ms=1000.7 detalhe=sem resposta em 1.0s (causa indeterminada: firewall, perda, lentidão...)
+2026-11-24 22:27:09,737 WARNING alvo=127.0.0.1 ip=127.0.0.1 porta=9006 resultado=TIMEOUT tempo_ms=1000.9 detalhe=sem resposta em 1.0s (causa indeterminada: firewall, perda, lentidão...)
+2026-11-24 22:27:09,737 WARNING alvo=127.0.0.1 ip=127.0.0.1 porta=9005 resultado=TIMEOUT tempo_ms=1001.2 detalhe=sem resposta em 1.0s (causa indeterminada: firewall, perda, lentidão...)
+2026-11-24 22:27:09,738 WARNING alvo=127.0.0.1 ip=127.0.0.1 porta=9007 resultado=TIMEOUT tempo_ms=1001.3 detalhe=sem resposta em 1.0s (causa indeterminada: firewall, perda, lentidão...)
+2026-11-24 22:27:09,739 INFO fim duracao=1.00s verificadas=6/6
