@@ -63,6 +63,5 @@ nmap -sT -p 9001-9004 127.0.0.1                             # comparação
 ## 5. Antes de apresentar
 
 - [ ] `./rodar_tudo.sh` sem falhas (exceto Nmap pendente, se ainda não instalado)
-- [ ] `nmap` instalado e `python experimentos/comparar_nmap.py` executado
 - [ ] Portas 9001–9007 livres na máquina da demonstração (`ss -ltn | grep 900`)
 - [ ] Ter lido o código inteiro de `portscanner.py` (~400 linhas, boa parte é comentário e docstring) pelo menos uma vez

@@ -1,6 +1,6 @@
 # Testes iniciais
 
-Gerado em 2026-11-24 22:26:46 (máquina local, alvo 127.0.0.1)
+Gerado em 2026-11-24 22:31:41 (máquina local, alvo 127.0.0.1)
 
 Montagem: serviços ativos em 9001 e 9002; 9004 saturada (sem resposta); 9003 e 9005 sem nada escutando.
 
@@ -23,11 +23,11 @@ Alvo: 127.0.0.1 (127.0.0.1) | portas: 5 | timeout: 1.0s | simultâneas: 20
 
 ALVO       PORTA  RESULTADO  SERVIÇO*      TEMPO      DETALHE
 ---------  -----  ---------  ------------  ---------  ------------------------------------------------------------------------
-127.0.0.1  9001   ABERTA     desconhecido  0.4 ms     conexão TCP estabelecida (handshake concluído)
-127.0.0.1  9002   ABERTA     desconhecido  0.4 ms     conexão TCP estabelecida (handshake concluído)
-127.0.0.1  9003   FECHADA    -             0.3 ms     conexão recusada (RST recebido, ECONNREFUSED)
-127.0.0.1  9004   TIMEOUT    -             1001.1 ms  sem resposta em 1.0s (causa indeterminada: firewall, perda, lentidão...)
-127.0.0.1  9005   FECHADA    -             0.1 ms     conexão recusada (RST recebido, ECONNREFUSED)
+127.0.0.1  9001   ABERTA     desconhecido  0.3 ms     conexão TCP estabelecida (handshake concluído)
+127.0.0.1  9002   ABERTA     desconhecido  0.1 ms     conexão TCP estabelecida (handshake concluído)
+127.0.0.1  9003   FECHADA    -             0.0 ms     conexão recusada (RST recebido, ECONNREFUSED)
+127.0.0.1  9004   TIMEOUT    -             1000.4 ms  sem resposta em 1.0s (causa indeterminada: firewall, perda, lentidão...)
+127.0.0.1  9005   FECHADA    -             0.0 ms     conexão recusada (RST recebido, ECONNREFUSED)
 
 Resumo: 5/5 portas verificadas em 1.00s — ABERTA=2 FECHADA=2 TIMEOUT=1 ERRO=0
 Portas abertas: 9001, 9002

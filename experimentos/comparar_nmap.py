@@ -19,7 +19,7 @@ import xml.etree.ElementTree as ET
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
-from comum import EVIDENCIAS, cabecalho, rodar_scanner, salvar  # noqa: E402
+from comum import EVIDENCIAS, RAIZ, cabecalho, rodar_scanner, salvar  # noqa: E402
 from lab.servidor_teste import PortaSaturada, ServicoTCP        # noqa: E402
 
 ALVO = "127.0.0.1"
@@ -31,9 +31,9 @@ EQUIVALENTE_NMAP = {"ABERTA": "open", "FECHADA": "closed", "TIMEOUT": "filtered"
 
 def rodar_nmap(portas: str) -> tuple[dict[int, str], str]:
     """Roda nmap -sT e devolve ({porta: estado}, versão). Salva a saída bruta como evidência."""
-    bruto = EVIDENCIAS / "02_nmap_saida_bruta.txt"
-    p = subprocess.run(["nmap", "-sT", "-Pn", "-p", portas, "-oN", str(bruto), "-oX", "-", ALVO],
-                       capture_output=True, text=True)
+    # cwd=RAIZ + caminho relativo: o cabeçalho gravado pelo Nmap não expõe caminhos da máquina
+    p = subprocess.run(["nmap", "-sT", "-Pn", "-p", portas, "-oN", "evidencias/02_nmap_saida_bruta.txt",
+                        "-oX", "-", ALVO], capture_output=True, text=True, cwd=RAIZ)
     raiz = ET.fromstring(p.stdout)
     estados = {int(x.get("portid")): x.find("state").get("state") for x in raiz.iter("port")}
     return estados, raiz.get("version", "?")

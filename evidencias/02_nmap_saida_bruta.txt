@@ -1,0 +1,11 @@
+# Nmap 7.98 scan initiated Tue Nov 24 22:31:49 2026 as: nmap -sT -Pn -p 9001,9002,9003,9004 -oN evidencias/02_nmap_saida_bruta.txt -oX - 127.0.0.1
+Nmap scan report for localhost (127.0.0.1)
+Host is up (0.000025s latency).
+
+PORT     STATE    SERVICE
+9001/tcp open     tor-orport
+9002/tcp open     dynamid
+9003/tcp closed   unknown
+9004/tcp filtered unknown
+
+# Nmap done at Tue Nov 24 22:31:50 2026 -- 1 IP address (1 host up) scanned in 1.21 seconds

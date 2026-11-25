@@ -1,6 +1,6 @@
 # Tratamento de erros — as 7 situações do roteiro
 
-Gerado em 2026-11-24 22:26:47 (máquina local, alvo 127.0.0.1)
+Gerado em 2026-11-24 22:31:41 (máquina local, alvo 127.0.0.1)
 
 | Situação | Código de saída (esperado) | Sem Traceback? |
 |---|---|---|

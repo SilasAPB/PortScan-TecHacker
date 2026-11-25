@@ -1,13 +1,13 @@
 # Experimento de mudança de estado do serviço
 
-Gerado em 2026-11-24 22:26:55 (máquina local, alvo 127.0.0.1)
+Gerado em 2026-11-24 22:31:51 (máquina local, alvo 127.0.0.1)
 
 Porta testada: 127.0.0.1:9001
 
 | Rodada | Esperado | Scanner | Tempo (ms) | Confere? |
 |---|---|---|---|---|
 | A — serviço ativo | ABERTA | ABERTA | 0.2 | sim |
-| B — serviço interrompido | FECHADA | FECHADA | 0.2 | sim |
+| B — serviço interrompido | FECHADA | FECHADA | 0.1 | sim |
 | C — serviço reiniciado | ABERTA | ABERTA | 0.1 | sim |
 
 ## Rodada A — serviço ativo
@@ -50,7 +50,7 @@ Alvo: 127.0.0.1 (127.0.0.1) | portas: 1 | timeout: 1.0s | simultâneas: 20
 
 ALVO       PORTA  RESULTADO  SERVIÇO*  TEMPO   DETALHE
 ---------  -----  ---------  --------  ------  ---------------------------------------------
-127.0.0.1  9001   FECHADA    -         0.2 ms  conexão recusada (RST recebido, ECONNREFUSED)
+127.0.0.1  9001   FECHADA    -         0.1 ms  conexão recusada (RST recebido, ECONNREFUSED)
 
 Resumo: 1/1 portas verificadas em 0.00s — ABERTA=0 FECHADA=1 TIMEOUT=0 ERRO=0
 Portas abertas: nenhuma

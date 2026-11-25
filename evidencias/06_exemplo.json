@@ -2,7 +2,7 @@
   "meta": {
     "alvo": "127.0.0.1",
     "ip": "127.0.0.1",
-    "inicio": "2026-11-24T22:27:08",
+    "inicio": "2026-11-24T22:32:04",
     "duracao_s": 1.003,
     "timeout_s": 1.0,
     "workers": 6,
@@ -17,7 +17,7 @@
       "porta": 6379,
       "estado": "ABERTA",
       "servico": "redis",
-      "tempo_ms": 0.3,
+      "tempo_ms": 0.4,
       "detalhe": "conexão TCP estabelecida (handshake concluído)"
     },
     {
@@ -26,7 +26,7 @@
       "porta": 9001,
       "estado": "ABERTA",
       "servico": "desconhecido",
-      "tempo_ms": 0.3,
+      "tempo_ms": 0.0,
       "detalhe": "conexão TCP estabelecida (handshake concluído)"
     },
     {
@@ -35,7 +35,7 @@
       "porta": 9004,
       "estado": "TIMEOUT",
       "servico": "-",
-      "tempo_ms": 1000.7,
+      "tempo_ms": 1000.5,
       "detalhe": "sem resposta em 1.0s (causa indeterminada: firewall, perda, lentidão...)"
     },
     {
@@ -44,7 +44,7 @@
       "porta": 9005,
       "estado": "TIMEOUT",
       "servico": "-",
-      "tempo_ms": 1001.2,
+      "tempo_ms": 1000.8,
       "detalhe": "sem resposta em 1.0s (causa indeterminada: firewall, perda, lentidão...)"
     },
     {
@@ -53,7 +53,7 @@
       "porta": 9006,
       "estado": "TIMEOUT",
       "servico": "-",
-      "tempo_ms": 1000.9,
+      "tempo_ms": 1000.7,
       "detalhe": "sem resposta em 1.0s (causa indeterminada: firewall, perda, lentidão...)"
     },
     {
@@ -62,7 +62,7 @@
       "porta": 9007,
       "estado": "TIMEOUT",
       "servico": "-",
-      "tempo_ms": 1001.3,
+      "tempo_ms": 1001.1,
       "detalhe": "sem resposta em 1.0s (causa indeterminada: firewall, perda, lentidão...)"
     }
   ]
