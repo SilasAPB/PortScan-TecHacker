@@ -1,6 +1,6 @@
 # Relatório Técnico — Port Scanner TCP
 
-**Disciplina:** Tecnologias Hacker · Roteiro 4  **Aluno:** _________________________  **Data:** ___/___/______
+**Disciplina:** Tecnologias Hacker · Roteiro 4  **Aluno:** Silas André Pereira de Brito  **Data:** 24/11/2026
 **Ambiente:** Linux, Python 3.14, alvo `127.0.0.1` (laboratório próprio). Todos os testes foram feitos apenas em
 sistemas sob meu controle. Código, evidências brutas e instruções: ver `README.md` e `evidencias/`.
 
@@ -77,30 +77,34 @@ scanner desiste antes da retransmissão e erra a conclusão; com `-t 3` ele a ca
 
 ## 3. Comparação com o Nmap (`nmap -sT -Pn -p 9001-9004 127.0.0.1`)
 
-| Porta TCP | Estado esperado | Scanner desenvolvido | Nmap |
+| Porta TCP | Estado esperado | Scanner desenvolvido | Nmap 7.98 (`-sT`) |
 |---|---|---|---|
-| 9001 | ABERTA | ABERTA | **[PREENCHER após rodar]** |
-| 9002 | ABERTA | ABERTA | **[PREENCHER após rodar]** |
-| 9003 | FECHADA | FECHADA | **[PREENCHER após rodar]** |
-| 9004 | sem resposta | TIMEOUT | **[PREENCHER após rodar]** |
+| 9001 | ABERTA | ABERTA | open |
+| 9002 | ABERTA | ABERTA | open |
+| 9003 | FECHADA | FECHADA | closed |
+| 9004 | sem resposta | TIMEOUT | filtered |
 
-> **Pendência:** o Nmap não estava instalado na máquina de desenvolvimento. Rodar `python experimentos/comparar_nmap.py`
-> após `sudo apt install nmap` — o script gera `evidencias/02_comparacao_nmap.md` com a coluna do Nmap real e
-> verifica a equivalência. **Não copiar valores sem executar.** Depois, ajustar o texto abaixo ao que foi observado.
+Evidências: `evidencias/02_comparacao_nmap.md` e `evidencias/02_nmap_saida_bruta.txt` (saída original do Nmap).
 
-**Análise (previsão a confirmar com a execução):** espera-se concordância em 9001–9003 (`open`/`closed`), pois
-`-sT` usa a mesma chamada `connect()` do SO. Em 9004 o Nmap deve reportar `filtered`, que corresponde ao nosso
-TIMEOUT: o Nmap faz a mesma inferência (sem resposta ⇒ possivelmente filtrada), mas com **retransmissões e
-timeouts adaptativos** baseados no RTT medido. Nosso scanner faz uma tentativa só com timeout fixo — por isso o
-experimento acima mostra que ele pode errar onde o Nmap, retentando, acertaria. Outros fatores de divergência:
-timeout, retentativas, rate limiting do alvo, condição da rede no momento. Nmap também oferece *service/version
-detection* (`-sV`), que o scanner não faz.
+**Análise.** Os resultados foram **equivalentes** nas quatro portas (ABERTA=open, FECHADA=closed,
+TIMEOUT=filtered). Era esperado em 9001–9003, pois `-sT` usa a mesma chamada `connect()` do SO que o nosso
+scanner. Em 9004 o Nmap classificou como `filtered`, a mesma inferência do nosso TIMEOUT (sem resposta ⇒
+possivelmente filtrada), mas com um **vocabulário mais informativo**: ele nomeia a hipótese (filtragem), enquanto
+o nosso rótulo apenas registra o fato observado. Diferenças notadas: (i) o Nmap atribui nomes de serviço às
+portas abertas pela tabela `nmap-services` (9001 → `tor-orport`, 9002 → `dynamid`), embora ali haja apenas
+meu serviço de teste, o que confirma que o nome não prova o serviço real; (ii) o Nmap concluiu o scan em
+1,22 s e o nosso em 1,00 s, o que não é comparável como desempenho (o Nmap inclui inicialização e saída). Segundo
+a documentação do Nmap, ele pode retransmitir e adaptar timeouts ao RTT medido, enquanto o nosso faz uma só
+tentativa com timeout fixo; **isso não foi isolado nesta bateria** (em loopback não há perda), mas o experimento
+da seção 2 mostra o risco de falso TIMEOUT que a retentativa mitigaria. Fatores gerais de divergência: timeout,
+retentativas, tratamento de erros, disponibilidade do serviço no instante e condição da rede. O Nmap também
+oferece detecção de serviço/versão (`-sV`), que o scanner não faz.
 
 **Uma porta aberta indica vulnerabilidade? Não.** Indica apenas que uma conexão TCP foi aceita naquelas
 condições. Saber **qual serviço** e **qual versão** exige passos adicionais (banner, fingerprint), e afirmar
 uma **vulnerabilidade** exige ainda confrontar a versão/configuração com CVEs ou testes específicos. São três
-etapas distintas: porta aberta → serviço identificado → vulnerabilidade confirmada. Na demonstração, a
-porta 6379 rotulada `redis` pelo scanner era um serviço falso, mostrando que o nome não prova nada.
+etapas distintas: porta aberta → serviço identificado → vulnerabilidade confirmada. Na bateria de testes, a
+porta 6379 rotulada `redis` pelo scanner era um serviço falso, e o Nmap atribuiu `tor-orport` à 9001: o nome não prova nada.
 
 ## 4. Experimento — mudança de estado do serviço (`evidencias/03_experimento_estado.md`)
 
@@ -137,7 +141,7 @@ sequencial e 1,00 s com `-w 6` (~4×).
 3. **Influência do timeout:** curto demais gera falsos TIMEOUT em portas abertas porém lentas (tabela da seção 2); longo
    demais deixa o scan lento (portas filtradas custam `-t` cada, atenuado pela concorrência). Deve-se calibrar pelo
    RTT da rede e, na dúvida, repetir com `-t` maior.
-4. **Diferenças em relação ao Nmap:** ver seção 3 (preencher conforme a execução real).
+4. **Diferenças em relação ao Nmap:** resultados equivalentes nas 4 portas; o Nmap rotula 9004 como `filtered` e dá nome de serviço às abertas, e (por documentação) retransmite com timeout adaptativo, que o nosso não faz (seção 3).
 5. **Mudanças de estado:** o scanner acompanhou corretamente A→B→C, confirmado por `ss`; o resultado vale para o momento da observação.
 6. **Melhorias para confiabilidade/eficiência:** retentativas e timeout adaptativo; *banner grabbing* e detecção de
    versão; limitação de taxa (rate limit) configurável; suporte a IPv6 e múltiplos IPs por nome; escaneamento de
